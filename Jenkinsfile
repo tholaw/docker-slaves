@@ -1,14 +1,10 @@
 pipeline {
-    agent { docker {
-        image 'ppodgorsek/robot-framework:latest'
-        }
-    }
+    agent { dockerfile true }
     stages {
-        stage('Functional regression tests') {
+        stage('Test') {
             steps {
-                sh '''
-                    robot --version
-                '''
+                sh 'node --version'
+                sh 'svn --version'
             }
         }
     }
