@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'robot-slave'
+    }
     stages {
         stage('Functional regression tests') {
             steps {
