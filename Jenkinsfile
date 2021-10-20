@@ -1,14 +1,9 @@
 pipeline {
-    agent {
-        label 'robot-slave'
-    }
-
+    agent any
     stages {
-        stage('Hello') {
+        stage('Functional regression tests') {
             steps {
-                sh 'java -version'
-                echo "Get working directory"
-                sh 'pwd'
+                sh "docker run --shm-size=1g -e BROWSER=firefox -v $WORKSPACE/robot-tests:/opt/robotframework/tests:Z -v $WORKSPACE/robot-reports:/opt/robotframework/reports:Z ppodgorsek/robot-framework:latest"
             }
         }
     }
