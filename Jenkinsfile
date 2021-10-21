@@ -4,7 +4,7 @@ pipeline {
         stage('Functional regression tests') {
             agent { docker {
                 image 'ppodgorsek/robot-framework:latest'
-                args '--shm-size=1g -u root' }
+                args '--shm-size=1g -u root -v /z-robot/tests:/opt/robotframework/tests -v /z-robot/reports:/opt/robotframework/reports' }
             }
             environment {
                 BROWSER = 'firefox'
