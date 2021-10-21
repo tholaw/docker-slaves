@@ -1,12 +1,11 @@
 pipeline {
-    agent { docker {
-        image 'ppodgorsek/robot-framework:latest'
-        args '--shm-size=1g -u root' }
-        }
+    agent { 
+        docker {image 'node:alpine'}
+    }
     stages {
         stage('Test') {
             steps {
-                sh 'robot --version'
+                sh 'node --version'
             }
         }
     }
